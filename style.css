@@ -1,18 +1,441 @@
+/* ===========================
+   Google Font
+=========================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Arial,sans-serif;background:#0f0f0f;color:#fff}
-header{position:sticky;top:0;background:#111;border-bottom:1px solid #2a2a2a;padding:16px;text-align:center;font-size:24px;font-weight:700}
-.wrap{display:flex;justify-content:center;padding:20px}
-.card{width:min(100%,650px);background:#181818;border:1px solid #2a2a2a;border-radius:16px;overflow:hidden}
-.profile{display:flex;gap:12px;padding:18px}
-.avatar{width:48px;height:48px;border-radius:50%;background:#e63946}
-.name{font-weight:700}.user{color:#999;font-size:14px}
-.text{padding:0 18px 18px;line-height:1.6}
-.thumb{height:320px;background:linear-gradient(135deg,#333,#111);display:flex;align-items:center;justify-content:center;color:#888;font-size:28px}
-.stats{display:flex;justify-content:space-around;padding:16px;border-top:1px solid #2a2a2a;color:#bbb}
-.action{padding:24px}
-.progress{height:8px;background:#333;border-radius:99px;overflow:hidden;margin:15px 0}
-.bar{height:100%;width:0;background:#e63946;transition:width 1s linear}
-button{width:100%;padding:16px;border:none;border-radius:10px;background:#e63946;color:#fff;font-size:18px;font-weight:bold}
-button:disabled{background:#555}
-@media(max-width:600px){.thumb{height:220px}header{font-size:20px}}
+/* ===========================
+   Reset
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:#000;
+    color:#fff;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* ===========================
+   Header
+=========================== */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    width:100%;
+    height:65px;
+
+    background:#000;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-bottom:1px solid #242424;
+}
+
+header h1{
+    font-size:22px;
+    font-weight:700;
+    color:#fff;
+}
+
+/* ===========================
+   Main Container
+=========================== */
+
+.wrap{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    padding:25px 15px;
+}
+
+/* ===========================
+   Feed Card
+=========================== */
+
+.card{
+
+    width:100%;
+    max-width:620px;
+
+    background:#111;
+
+    border:1px solid #242424;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:
+    0 10px 35px rgba(0,0,0,.45);
+
+    animation:fadeUp .6s ease;
+}
+
+/* ===========================
+   Profile
+=========================== */
+
+.profile{
+
+    display:flex;
+    align-items:center;
+
+    gap:14px;
+
+    padding:20px;
+}
+
+.avatar{
+
+    width:52px;
+    height:52px;
+
+    border-radius:50%;
+
+    background:#E53935;
+
+    flex-shrink:0;
+}
+
+.name{
+
+    font-size:17px;
+    font-weight:700;
+}
+
+.user{
+
+    color:#9c9c9c;
+
+    margin-top:2px;
+
+    font-size:14px;
+}
+
+/* ===========================
+   Post Text
+=========================== */
+
+.text{
+
+    padding:0 20px 18px;
+
+    font-size:17px;
+
+    line-height:1.7;
+}
+
+/* ===========================
+   Thumbnail
+=========================== */
+
+.thumb{
+
+    position:relative;
+
+    width:100%;
+
+    aspect-ratio:16/9;
+
+    overflow:hidden;
+
+    background:#181818;
+}
+
+.thumb img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    object-position:center;
+
+    display:block;
+
+    transition:.4s;
+}
+
+.thumb:hover img{
+
+    transform:scale(1.04);
+}
+
+/* ===========================
+   Play Button
+=========================== */
+
+.play{
+
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    width:70px;
+    height:70px;
+
+    border-radius:50%;
+
+    background:rgba(229,57,53,.95);
+
+    color:#fff;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:28px;
+
+    backdrop-filter:blur(8px);
+}
+
+/* ===========================
+   Stats
+=========================== */
+
+.stats{
+
+    display:flex;
+
+    justify-content:space-around;
+
+    padding:18px;
+
+    border-top:1px solid #222;
+
+    color:#bdbdbd;
+
+    font-size:15px;
+}
+
+.stats div{
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.stats div:hover{
+
+    color:#fff;
+}
+
+/* ===========================
+   Action Section
+=========================== */
+
+.action{
+
+    padding:22px;
+}
+
+/* ===========================
+   Progress
+=========================== */
+
+.progress{
+
+    width:100%;
+
+    height:8px;
+
+    background:#2d2d2d;
+
+    border-radius:50px;
+
+    overflow:hidden;
+
+    margin-bottom:18px;
+}
+
+.bar{
+
+    width:0%;
+
+    height:100%;
+
+    background:linear-gradient(90deg,#E53935,#ff6b6b);
+
+    transition:width 1s linear;
+}
+
+/* ===========================
+   Button
+=========================== */
+
+button{
+
+    width:100%;
+
+    padding:17px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#E53935;
+
+    color:#fff;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+button:hover:not(:disabled){
+
+    background:#ff4b4b;
+
+    transform:translateY(-2px);
+}
+
+button:disabled{
+
+    background:#555;
+
+    cursor:not-allowed;
+}
+
+/* ===========================
+   Animations
+=========================== */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+    }
+
+}
+
+/* ===========================
+   Tablet
+=========================== */
+
+@media (max-width:768px){
+
+    header{
+
+        height:60px;
+    }
+
+    header h1{
+
+        font-size:20px;
+    }
+
+    .card{
+
+        border-radius:16px;
+    }
+
+    .text{
+
+        font-size:16px;
+    }
+
+}
+
+/* ===========================
+   Mobile
+=========================== */
+
+@media (max-width:480px){
+
+    .wrap{
+
+        padding:0;
+    }
+
+    .card{
+
+        border-radius:0;
+
+        border:none;
+
+        max-width:100%;
+    }
+
+    .profile{
+
+        padding:16px;
+    }
+
+    .avatar{
+
+        width:46px;
+        height:46px;
+    }
+
+    .text{
+
+        padding:0 16px 16px;
+
+        font-size:15px;
+    }
+
+    .stats{
+
+        font-size:14px;
+
+        padding:15px;
+    }
+
+    .action{
+
+        padding:16px;
+    }
+
+    button{
+
+        padding:15px;
+
+        font-size:17px;
+    }
+
+}
+
+/* ===========================
+   Large Screens
+=========================== */
+
+@media (min-width:1400px){
+
+    .card{
+
+        max-width:700px;
+    }
+
+}
